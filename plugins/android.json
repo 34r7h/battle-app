@@ -1,0 +1,37 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {}
+    },
+    "installed_plugins": {
+        "cordova-plugin-device": {
+            "PACKAGE_NAME": "de.grammatidis.battle"
+        },
+        "cordova-plugin-file": {
+            "PACKAGE_NAME": "de.grammatidis.battle"
+        },
+        "cordova-plugin-inappbrowser": {
+            "PACKAGE_NAME": "de.grammatidis.battle"
+        },
+        "cordova-plugin-media": {
+            "PACKAGE_NAME": "de.grammatidis.battle"
+        },
+        "cordova-plugin-network-information": {
+            "PACKAGE_NAME": "de.grammatidis.battle"
+        },
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "de.grammatidis.battle"
+        },
+        "com.telerik.plugins.wkwebview": {
+            "WKWEBVIEW_SERVER_PORT": "12344",
+            "PACKAGE_NAME": "de.grammatidis.battle"
+        },
+        "nl.kingsquare.cordova.background-audio": {
+            "PACKAGE_NAME": "de.grammatidis.battle"
+        }
+    },
+    "dependent_plugins": {}
+}

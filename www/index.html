@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, target-densitydpi=medium-dpi" />
+		<title>Grammatidis Battle</title>
+		
+		<!-- css sources -->
+		<link rel="stylesheet" type="text/css" href="css/base.css" />
+		<link rel="stylesheet" type="text/css" href="css/app.css" />
+		<link rel="stylesheet" type="text/css" href="css/desktop.css" />
+		<link rel="stylesheet" type="text/css" href="css/themes.css" />
+		<link rel="stylesheet" type="text/css" href="css/highscore.css" />
+		<link rel="stylesheet" type="text/css" href="css/scrollbar.css" />
+
+		<!-- all javascript sources -->
+		<script type="text/javascript" src="cordova.js"></script>
+		<script type="text/javascript" src="js/debug.js?v=30"></script>
+		<script type="text/javascript" src="js/stacktrace.js?v=30"></script>
+		<script type="text/javascript" src="js/helper.js?v=30"></script>
+		<script type="text/javascript" src="js/ui.js?v=30"></script>
+		<script type="text/javascript" src="js/highscore.js?v=30"></script>
+		<script type="text/javascript" src="js/keys.js?v=30"></script>
+		<script type="text/javascript" src="js/effects.js?v=30"></script>
+		<script type="text/javascript" src="js/graphic.js?v=30"></script>
+		<script type="text/javascript" src="js/audio.js?v=30"></script>
+		<script type="text/javascript" src="js/resourcemanager.js?v=30"></script>
+		<script type="text/javascript" src="js/map.js?v=30"></script>
+		<script type="text/javascript" src="js/swipe.js?v=30"></script>
+		<script type="text/javascript" src="js/player.js?v=30"></script>
+		<script type="text/javascript" src="js/ghost.js?v=30"></script>
+		<script type="text/javascript" src="js/fruit.js?v=30"></script>
+		<script type="text/javascript" src="js/game.js?v=30"></script>
+		<script type="text/javascript" src="js/platform.js?v=30"></script>
+		<script type="text/javascript" src="js/platform/browser/media.js?v=30"></script>
+		<script type="text/javascript" src="js/platform/browser/connection.js?v=30"></script>
+		<script type="text/javascript" src="js/jquery.js?v=30"></script>
+		<script type="text/javascript" src="js/jquery.scrollbar.js?v=30"></script>
+		<script type="text/javascript" src="js/main.js?v=30"></script>
+		<script type="text/javascript" src="js/pill.js?v=30"></script>
+		<script type="text/javascript" src="js/energizer.js?v=30"></script>
+	</head>
+	<body style="display: none;">
+		<div id="FPS"></div>
+		<div id="intro_wrapper">
+			<div id="intro_1"><img src="img/intro_1_hdpi.png"></div>
+			<div id="intro_2"><img src="img/intro_2_hdpi.png"></div>
+			<div id="intro_3"><img src="img/intro_3_hdpi.png"></div>
+		</div>
+		<div id="main_wrapper">
+			<div id="header">
+				<div class="icon icon_info"></div>
+				<div class="icon icon_playpause"></div>
+				<div class="header_logo">
+					<img src="img/header_logo_ldpi.png">
+				</div>
+				<div class="header_battle only_hdpi">
+					<img src="img/header_battle_hdpi.png">
+				</div>
+				<div class="icon icon_sound"></div>
+			</div>
+			<div id="page_outer_wrapper">
+				<div id="page_main" class="page">
+					<div class="page_inner_wrapper">
+							<img src="img/main_menu_logo_ldpi.png">
+							<div id="main_menu">
+								<div id="start_button" class="home_button">
+									<span class="icon-wrapper"><span class="icon"></span></span>
+									<span class="label">Spiel starten</span>
+								</div>
+								<div id="highscore_button" class="home_button">
+									<span class="icon-wrapper"><span class="icon"></span></span>
+									<span class="label">Highscores</span>
+								</div>
+								<div id="rules_button" class="home_button">
+									<span class="icon-wrapper"><span class="icon"></span></span>
+									<span class="label">Spielregeln</span>
+								</div>
+							</div>
+					</div>
+				</div>
+				<div id="page_game" class="page">  
+					<div class="page_double_border"> 
+						<div class="page_inner_wrapper">
+							<div id="game_wrapper">
+							</div>
+						</div>
+					</div>
+				</div>
+				<div id="page_rules" class="page">
+					<div class="page_double_border">
+						<div class="page_inner_wrapper">
+							<div class="content_pane">
+								<h1>Spielregeln</h1>
+								<p class="teaser">Vorsicht, die rasenden Beißerchen haben es auf dich abgesehen!</p>
+								<h2>Klicke auf Spiel starten und los geht die Hatz!</h2>
+								<hr>
+								<p>Flüchte so schnell du kannst mit dem Grammatidis-Männchen vor den wilden Zahngeistern und sammle dabei Punkte! Zu Spielbeginn bekommst Du 3 Leben. Fängt dich ein Zahngeist, verlierst Du ein Leben. Erreichst Du einen bestimmten Punktestand (10 000, 30 000, 50 000, 100 000, 200 000 und 500 000), so bekommst Du extra ein Leben geschenkt. Ziel des Spiels ist es, alle grauen und roten Punkte einzusammeln.</p><p>Für die grauen Punkte auf den Wegen bekommst du jeweils 20 Punkte.</p>
+								<h2>Die roten Punkte belohnen dich mit 50 Punkten und Kiefi-Power!</h2>
+								<hr>
+
+								<p>Die Zahngeister sind dann für begrenzte Zeit bunt eingefärbt und damit ungefährlich. Je mehr Zahngeister du in dieser Zeit unmittelbar hintereinander fängst, desto mehr Punkte kassierst du pro Zahngeist. Für besonders gute Zahnpflege bekommst Du ein (zuckerfreies) Fruchtgummi-Bonbon. Wenn Du dieses Bonbon ergatterst, bekommst Du Extrapunkte. Es gibt 5 verschiedene Fruchtgummis im Wert von 100 bis 1000 Punkten.</p>
+								<h2>Hast du alle grauen und roten Punkte eingesammelt, geht’s weiter ins nächste Level.</h2>
+								<hr>
+								<p>Mit jedem Level wird das Spiel schwieriger. Die Geister werden immer abwechselnd schneller oder lassen sich nicht mehr so lange fressen. Sind alle Leben verbraucht, so ist das Spiel zu Ende.</p>
+								<p class="desktop-only">P = Pause<br> 
+								   M = Musik an/aus<br>
+								   Q = Spiel beenden</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div id="page_highscore" class="page">
+					<div class="page_double_border">
+						<div class="page_inner_wrapper">
+							<div class="content_pane">
+								<div id="highscore_version_2">
+									<h1>Highscores aus Version 2</h1>
+									<div class="highscore_left">
+										<h2 id="highscore_top_3_h2">TOP 3 akt. Quartal</h2>
+									</div>
+									<div class="highscore_right highscore_top_3">
+									</div>
+									<hr>
+									<div class="highscore_left">
+										<h2 class="best_of">BEST OF</h2>
+									</div>
+									<div class="highscore_right highscore_history"></div>
+									<hr>
+									<div class="highscore_left">
+										<h2 class="best_ever">DIE BESTEN ALLER ZEITEN</h2>
+									</div>
+									<div class="highscore_right best_ever"></div>
+								</div>
+								<div id="highscore_version_1">
+									<h1>Highscores aus Version 1</h1>
+									<div class="highscore_left">
+										<h2 class="best_of">BEST OF</h2>
+									</div>
+									<div class="highscore_right highscore_history"></div>
+									<hr>
+									<div class="highscore_left">
+										<h2 class="best_ever">DIE BESTEN ALLER ZEITEN</h2>
+									</div>
+									<div class="highscore_right best_ever"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div id="page_highscore_list" class="page">
+					<div class="page_double_border">
+						<div class="page_inner_wrapper">
+							<div class="content_pane">
+								<h1>Battle Highscore</h1>
+								<div id="highscore_list">
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div id="page_settings" class="page">
+					<div class="page_double_border">
+						<div class="page_inner_wrapper">
+							<div class="content_pane">
+								<h1>Einstellungen</h1>
+								<p class="teaser">Konfiguriere dein Battle nach deinen Wünschen!</p>
+								<h2 class="sound_settings">Battle Music:</h2>
+								<hr class="sound_settings">
+								<div class="sound_settings" id="music_wrapper">
+									<div class="column">
+										<div class="cell" id="music_original"><div class="icon icon_music"></div> <span>Original</span><span class="check">&#x2713;</span></div>
+										<div class="cell" id="music_elektro"><div class="icon icon_music"></div> <span>Electro</span><span class="check">&#x2713;</span></div>
+									</div>
+									<div class="column">
+										<div class="cell" id="music_pop"><div class="icon icon_music"></div> <span>Pop</span><span class="check">&#x2713;</span></div>
+										<div class="cell" id="music_kids"><div class="icon icon_music"></div> <span>Kids</span><span class="check">&#x2713;</span></div>
+									</div>
+									<div class="column">
+										<div class="cell" id="music_rock"><div class="icon icon_music"></div> <span>Rock</span><span class="check">&#x2713;</span></div>
+										<div class="cell" id="music_dance"><div class="icon icon_music"></div> <span>Dance</span><span class="check">&#x2713;</span></div>
+									</div>
+								</div>
+								<div class="spacer"></div>
+								<h2 class="light_blue">Battle Hintergrund</h2>
+								<hr>
+								<div id="background_wrapper">
+									<div class="column">
+										<div id="theme_classic" class="cell">
+											<div class="background_icon background_icon_classic"></div><span>Classic</span><span class="check">&#x2713;</span>
+										</div>
+									</div>
+									<div class="column">
+										<div id="theme_smile" class="cell">
+											<div class="background_icon background_icon_smile"></div><span>Smile</span><span class="check">&#x2713;</span>
+										</div>
+									</div>
+									<div class="column">
+										<div id="theme_techno" class="cell">
+											<div class="background_icon background_icon_techno"></div><span>Techno</span><span class="check">&#x2713;</span>
+										</div>
+									</div>
+									<div class="column">
+										<div id="theme_pattern" class="cell">
+											<div class="background_icon background_icon_pattern"></div><span>Muster</span><span class="check">&#x2713;</span>
+										</div>
+									</div>
+								</div>
+								<div class="spacer"></div>
+								<h2 class="dark_blue">Battle Hero</h2>
+								<hr>
+								<div id="hero_wrapper">
+									<div class="column">
+										<div id="player_boy" class="cell">
+											<div class="player_icon icon_boy"></div><span>Männchen</span><span class="check">&#x2713;</span>
+										</div>
+									</div>
+									<div class="column">
+										<div id="player_girl" class="cell">
+											<div class="player_icon icon_girl"></div><span>Mädchen</span><span class="check">&#x2713;</span>
+										</div>
+									</div>
+									<div class="column">
+										<div id="player_fussballer" class="cell">
+											<div class="player_icon icon_football"></div><span>Fußballer</span><span class="check">&#x2713;</span>
+										</div>
+									</div>
+									<div class="column">
+										<div id="player_topmodel" class="cell">
+											<div class="player_icon icon_supermodel"></div><span>Supermodel</span><span class="check">&#x2713;</span>
+										</div>
+									</div>
+								</div>
+								<!--<div class="spacer"></div>
+								<h2 class="dark_blue">Motion</h2>
+								<button id="motion_less">Less</button>
+								<button id="motion_more">more</button>
+								<span id="motion_current"></span>-->
+							</div>
+						</div>
+					</div>
+				</div>
+				<div id="page_more" class="page">
+					<div class="page_double_border">
+						<div class="page_inner_wrapper">
+							<div class="content_pane">
+								<div class="icon_close"></div>
+								<h1>Powered by Dr. Alexis Grammatidis</h1>
+								<p>
+								Dr. med. dent. Alexis Grammatidis<br>
+								Fachzahnarzt für Kieferorthopädie<br>
+								Schlierbacher Str. 2 <br>
+								73230 Kirchheim-Teck <br>
+								Telefon 07021 - 48 34 48 <br>
+								Telefax 07021 - 48 34 49 <br>
+								Mail: praxis@grammatidis.de <br>
+								www.grammatidis.de</p>
+								<p><a class="external_link" href="http://www.grammatidis.de/impressum.php">Impressum</a></p>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div id="navigation_wrapper">
+				<ul id="navigation">
+					<li id="navi_home"><span class="label">Home</span><span class="icon"></span></li>
+					<li id="navi_start"><span class="label">Spiel starten</span><span class="icon"></span></li>
+					<li id="navi_highscore"><span class="label">Highscore</span><span class="icon"></span></li>
+					<li id="navi_rules"><span class="label">Spielregeln</span><span class="icon"></span></li>
+					<li id="navi_settings"><span class="label">Einstellungen</span><span class="icon"></span></li>
+					<li id="navi_more"><span class="label">Mehr</span><span class="icon"></span></li>
+				</ul>
+			</div>
+		</div>
+		<div id="loading">
+			<h1 id="loading_status">Loading</h1>
+			<div class="loading_bar_wrapper"><div class="loading_bar"></div></div>
+		</div>
+		<div id="highscore_dialog" class="dialog">
+			<div class="dialog_inner_border">
+				<h1>Neuer Highscore</h1>
+				<div class="content">
+					<p>Du hast einen neune Highscore erzielt! Mit <span id="score"></span> Punkten landest Du auf Platz <span id="position"></span></p>
+					<p>
+						<label>Dein Name:</label>
+						<input type="text" id="highscore_name">
+					</p>
+				</div>
+				<div class="buttons">
+					<button class="positive_button">Eintragen!</button>
+					<button class="negative_button">Nicht eintragen!</button>
+				</div>
+			</div>
+		</div>
+		<div id="alert_dialog" class="dialog">
+			<div class="dialog_inner_border">
+				<h1>Achtung</h1>
+				<div class="content">
+					<p>Es läuft gerade noch ein Spiel! Willst Du das aktuelle Spiel beenden und auf eine andere Seite wechseln?</p>
+				</div>
+				<div class="buttons">
+					<button class="positive_button">Ja!</button>
+					<button class="negative_button">Nein!</button>
+				</div>
+			</div>
+		</div>
+		<div id="connection_dialog" class="dialog">
+			<div class="dialog_inner_border">
+				<h1>Achtung</h1>
+				<div class="content">
+					<p>Es besteht keine Verbindung zum Internet. Es können keine Highscore Daten gespeichert und angezeigt werden.</p>
+				</div>
+				<div class="buttons">
+					<button class="positive_button">Ok</button>
+				</div>
+			</div>
+		</div>
+		<div id="ghost_info_scared" class="dialog">
+			<div class="dialog_inner_border">
+				<h1>Nächstes Level!</h1>
+				<div class="content">
+					<p>Die Zähne können nicht mehr so lange gefressen werden!</p>
+				</div>
+			</div>
+		</div>
+		<div id="ghost_info_speed" class="dialog">
+			<div class="dialog_inner_border">
+				<h1>Nächstes Level!</h1>
+				<div class="content">
+					<p>Die Zähne werden schneller!</p>
+				</div>
+			</div>
+		</div>
+		<div id="ghost_info_scared_speed" class="dialog">
+			<div class="dialog_inner_border">
+				<h1>Nächstes Level!</h1>
+				<div class="content">
+					<p>Die Zähne werden schneller und können nicht mehr so lange gefressen werden!</p>
+				</div>
+			</div>
+		</div>
+		<div id="ghost_info_more" class="dialog">
+			<div class="dialog_inner_border">
+				<h1>Nächstes Level!</h1>
+				<div class="content">
+					<p>Es verfolgt dich ein Zahn mehr!</p>
+				</div>
+			</div>
+		</div>
+		<div id="no_highscore" class="dialog">
+			<div class="dialog_inner_border">
+				<h1>Leider kein Highscore</h1>
+				<div class="content">
+					<p>Leider hast Du keinen neuen Highscore ereicht.</p>
+				</div>
+				<div class="buttons">
+					<button class="positive_button">Ok</button>
+				</div>
+			</div>
+		</div>
+		<div id="no_new_highscore" class="dialog">
+			<div class="dialog_inner_border">
+				<h1>Leider kein Highscore</h1>
+				<div class="content">
+					<p>Dein Highscore wurde nicht eingetragen. Du hast bereits einen höheren Highscore erzielt.</p>
+				</div>
+				<div class="buttons">
+					<button class="positive_button">Ok</button>
+				</div>
+			</div>
+		</div>
+		<div id="old_version" class="dialog">
+			<div class="dialog_inner_border">
+				<h1>Deine Version der App ist zu alt!</h1>
+				<div class="content">
+					<p>Dein Highscore wurde nicht eingetragen. Du musst deine App updaten.</p>
+				</div>
+				<div class="buttons">
+					<button class="positive_button">Ok</button>
+				</div>
+			</div>
+		</div>
+		<div id="unkown_error" class="dialog">
+			<div class="dialog_inner_border">
+				<h1>Unkbekannter Fehler</h1>
+				<div class="content">
+					<p>Es ist ein Fehler Aufgetreten. Bitte schließ die App und starte erneut!</p>
+				</div>
+				<div class="buttons">
+					<button class="positive_button">Ok</button>
+				</div>
+			</div>
+		</div>
+		<div id="info_performance" class="dialog">
+			<div class="dialog_inner_border">
+				<h1>Achtung</h1>
+				<div class="content">
+					<p>Es kann zu Performance Problemen kommen. Bitte schließ alle Browser Tabs!</p>
+				</div>
+			</div>
+		</div>
+		<div id="game_close" class="dialog">
+			<div class="dialog_inner_border">
+				<h1>Spiel beenden</h1>
+				<div class="content">
+					<p>Das Spiel sollte immer nur einmal ausgeführt werden. Mit einem Klick auf "Ok" wird das Fenster geschlossen.</p>
+				</div>
+				<div class="buttons">
+					<button id="game_close_ok">Ok</button>
+					<button id="game_close_cancel">Abbrechen</button>
+				</div>
+			</div>
+		</div>
+		<div id="resize_confirm" class="dialog">
+			<div class="dialog_inner_border">
+				<h1>Größe ändern?</h1>
+				<div class="content">
+					<p>Um die größe des Fensters anzupassen muss auf die Startseite gewechselt werden. Sollte gerade ein Spiel gespielt werden wird es beendet.</p>
+				</div>
+				<div class="buttons">
+					<button class="positive_button">Ok</button>
+					<button class="negative_button">Abbrechen</button>
+				</div>
+			</div>
+		</div>
+		<div id="exception">
+			<div id="logo">
+				<img src="/img/main_menu_logo_hdpi.png">
+			</div>
+			<div id="container">
+				<h1>Oh nein!</h1>
+				<p>Irgend etwas ist hier schief gelaufen! Versuche Deinen Browser Cache zu löschen, wenn Du diese Seite totzdem wieder siehst kopiere bitten den folgenden Text und schick ihn in einer E-Mail an praxis(at)grammatidis.de. <a href="/">Zurück zum Spiel!</a></p>
+				<p class="stack"></p>
+				<h3>Alternative Browser:</h3>
+				<p>Die Webanwendung ist mit den aktuellen Versionen von <a href="#" onclick="window.open('http://www.google.de/intl/de/chrome/browser/')">Google Chrome</a>, <a  href="#" onclick="window.open('http://www.mozilla.org/de/firefox/new/')">FireFox</a> oder <a href="#" onclick="window.open('http://www.opera.com/de/computer/linux')">Opera</a> gestestet.</p>
+			</div>
+		</div>
+		<div id="loading_overlay"></div>
+		<div id="swipe_overlay"></div>
+		<div id="debug_wrapper">
+			<h3>FPS</h3>
+			<span id="debug_fps" class="value"></span>
+			<h3>SPF</h3>
+			<span id="debug_spf" class="value"></span>
+
+			<h3>Console</h3>
+			<div id="debug_console"></div>
+		</div>
+	</body>
+</html>

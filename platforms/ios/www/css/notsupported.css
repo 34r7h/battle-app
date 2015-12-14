@@ -1,0 +1,72 @@
+
+@font-face {
+	font-family: 'Wallpoet';
+	src: url('../fonts/Wallpoet-Regular.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+body {
+	background: url("../img/bg_classic.jpg");
+	font-family: Arial;
+	font-size: 14px;
+	color: #202020;
+}
+
+h1,h3 {
+	font-family: 'Wallpoet', Arial;
+	font-size: 35px;
+	color: #005da8;
+}
+
+h3 {
+	font-size: 25px;
+}
+
+#logo,
+#content {
+	width: 608px;
+	margin: 0 auto;
+}
+
+.app_screenshot {
+	margin-left: 34px;
+	width: 178px;
+	border: 1px solid #005da8;
+	border-radius: 3px;
+	float: left;
+}
+
+.app_screenshot:first-child {
+	margin: 0px;
+}
+
+.stack {
+	display: block;
+	padding: 10px;
+	border: 1px solid #c0c0c0;
+	background-color: #fff;
+	border-radius: 3px;
+	word-wrap:break-word;
+}
+
+@media screen and (max-width: 640px) {
+	#content,
+	#logo {
+		width: 95%;
+		margin: 0 auto;
+	}
+
+	#logo img {
+		width: 100%;
+	}
+
+
+	.app_screenshot {
+		float: none;
+		clear: both;
+		width: 100%;
+		margin: 0px 0px 20px 0px !important;
+	}
+
+}

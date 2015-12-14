@@ -1,0 +1,118 @@
+/* THEMES */
+.theme_classic {
+	background: url("../img/bg_classic.jpg");
+}
+
+.theme_smile {
+	background: url("../img/bg_smile.jpg");
+}
+
+.theme_techno {
+	background: url("../img/bg_techno.jpg");
+}
+
+.theme_pattern {
+	background: url("../img/bg_muster2.jpg");
+}
+
+.theme_classic #page_outer_wrapper {
+}
+
+.theme_smile .page,
+.theme_techno .page,
+.theme_classic .page,
+.theme_pattern .page,
+.theme_smile .dialog,
+.theme_techno .dialog,
+.theme_classic .dialog,
+.theme_pattern .dialog {
+	background-color: #ffffff;
+}
+
+.theme_classic .page,
+.theme_pattern .page,
+.theme_classic .dialog,
+.theme_pattern .dialog {
+	box-shadow: 0px 0px 10px 4px #11599d;
+	-webkit-box-shadow: 0px 0px 10px 4px #11599d;
+	-moz-box-shadow: 0px 0px 10px 4px #11599d;
+}
+
+.theme_smile .page,
+.theme_smile .dialog {
+	box-shadow: 0px 0px 10px 4px #6e0036;
+	-webkit-box-shadow: 0px 0px 10px 4px #6e0036;
+	-moz-box-shadow: 0px 0px 10px 4px #6e0036;
+}
+
+.theme_techno .page,
+.theme_techno .dialog {
+	box-shadow: 0px 0px 10px 4px #202020;
+	-webkit-box-shadow: 0px 0px 10px 4px #202020;
+	-moz-box-shadow: 0px 0px 10px 4px #202020;
+}
+
+.theme_classic .page_double_border,
+.theme_pattern .page_double_border,
+.theme_classic .dialog_inner_border,
+.theme_pattern .dialog_inner_border  {
+	border: 1px solid #9ac7e6;
+	border-top-color: #fff;
+	border-left-color: #fff;
+}
+
+.theme_techno .page_double_border,
+.theme_pattern .dialog_inner_border   {
+	border: 1px solid #666666;
+	border-top-color: #fff;
+	border-left-color: #fff;
+}
+
+.theme_smile .page_double_border,
+.theme_pattern .dialog_inner_border {
+	border: 1px solid #cd0067;
+	border-top-color: #fff;
+	border-left-color: #fff;
+}
+
+.theme_classic #loading .loading_bar,
+.theme_pattern #loading .loading_bar,
+.theme_pattern .jspDrag,
+.theme_classic .jspDrag
+{
+	background-color: #9ac7e6;
+}
+
+.theme_techno #loading .loading_bar,
+.theme_techno .jspDrag {
+	background-color: #666666;
+}
+
+.theme_smile #loading .loading_bar,
+.theme_smile .jspDrag {
+	background-color: #cd0067;
+}
+
+.theme_classic #page_main,
+.theme_smile #page_main,
+.theme_techno #page_main,
+.theme_pattern #page_main {
+	box-shadow: none;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	background-color: transparent;
+}
+
+.screen_ldpi .page,
+.screen_ldpi .page_double_border,
+.screen_ldpi .dialog,
+.screen_ldpi .dialog_inner_border {
+	border-radius: 2px;
+}
+
+.screen_hdpi .page .page_double_border,
+.screen_hdpi .page,
+.screen_hdpi .dialog,
+.screen_hdpi .dialog_inner_border {
+	border-radius: 10px;
+}

@@ -1,0 +1,9 @@
+/*** ONLY SPECIAL APP STYLE HERE ***/
+
+.app .external_link {
+	display: none;
+}
+
+.app .desktop-only {
+	display: none;
+}

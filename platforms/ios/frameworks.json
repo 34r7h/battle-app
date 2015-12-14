@@ -1,0 +1,5 @@
+{
+    "SystemConfiguration.framework": 2,
+    "libz.dylib": 1,
+    "CFNetwork.framework": 1
+}

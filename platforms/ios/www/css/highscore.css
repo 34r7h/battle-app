@@ -1,0 +1,86 @@
+#highscore_version_1,
+#highscore_version_2,
+#highscore_list { overflow: hidden; clear: both; }
+
+#highscore_list {
+	padding: 10px
+}
+
+.link,
+.link_quarter_spacer { display: inline-block; font-weight: bold; line-height: 20px; height: 20px; font-weight: bold; color: #cf0d63; margin-left: 2px;  cursor: pointer; float: left;  }
+.link_quarter_spacer_1 { display: none; }/*.link_quarter:before { content: " :: "; }
+.link_quarter:first-child:before { content: ""; }*/
+.link_quarter.active { text-decoration: underline; }
+.link_back,
+.link_history { width: 50px; height: 55px; display: block; background: url("../img/highscore_history_icon.png")no-repeat; cursor: pointer; color: #fff; padding: 15px 10px 0px 10px; margin-top: 0px; text-align: center; }
+
+.screen_hdpi .link_history:nth-child(6) { clear: left;  }
+.screen_ldpi .link_history:nth-child(4) { clear: left;  }
+.screen_hdpi .highscore_left { float: left; width: 150px; }
+.screen_ldpi .highscore_left { float: left; width: 60px; }
+.screen_hdpi .highscore_right { float: left; }
+.screen_ldpi .highscore_right { float: left; width: 220px }
+.screen_hdpi .highscore-list li .name,
+.screen_hdpi .highscore-list li .score { width: 200px; }
+.screen_ldpi .highscore-list li .name {width: 180px; margin-left: 3px;}
+.screen_ldpi .highscore-list li .score { width: 70px; margin-left: 3px; }
+.screen_ldpi .highscore-list-top3  li .name {width: 120px !important; }
+.screen_ldpi .highscore-list-top3  li .score {width: 50px !important; }
+.highscore_left h2, 
+.highscore_right h2 { margin: 0; }
+.history_wrapper {overflow: hidden;}
+
+/*** HISGHSCORE LIST ***/
+.highscore-list { list-style: none; clear: both; overflow: hidden; margin: 0; padding: 0; }
+.highscore-list li { clear: both; overflow: hidden; margin: 0; padding: 0; }
+.highscore-list li .icon,
+.highscore-list li .name,
+.highscore-list li .date,
+.highscore-list li .score { float: left; }
+.highscore-list li .name,
+.highscore-list li .date,
+.highscore-list li .score { line-height: 20px; font-weight: bold; color: #aaaaaa; }
+.highscore-list li .icon { display: none; height: 20px; width: 20px; background: url("../img/highscore_top_icons.png") no-repeat; margin-right: 5px; }
+.highscore-list .position_1 .name,
+.highscore-list .position_1 .score { color: #cf0d63 !important; }
+.highscore-list-top3 .position_1 .icon { display: block; background-position: 0px 0px; }
+.highscore-list-top3 .position_2 .icon { display: block; background-position: 0px -20px; }
+.highscore-list-top3 .position_3 .icon { display: block; background-position: 0px -40px; }
+.highscore-list-top3 { margin-bottom: 10px; }
+
+
+h2.best_of { color: #8ecff0; }
+h2.best_ever { color: #d5b153; }
+.link_best_ever { width: 70px; height: 70px; display: block; background: url("../img/highscore_history_best_icon.png") no-repeat; cursor: pointer; }
+
+.quarter.active {
+	display: block;
+	background-color: white;
+}
+
+.quarter {
+	display: none;
+}
+.quarter_link_wrapper {
+	margin-left: 20px;
+	overflow: hidden;
+	display: block;
+	float: left;
+	margin-bottom: 10px;
+	margin-top: 20px;
+}
+
+.screen_ldpi .quarter_link_wrapper {
+	clear: both;
+	margin: 0px 0px 10px 0px;
+}
+
+.screen_ldpi .quarter_link_wrapper .link {
+	margin: 0;
+}
+
+.highscore_year_2013.game_version_2 .link_quarter_spacer {
+	display: none;
+}
+
+/*.year { position: absolute; left: 18px; top: 17px; font-weight: bold; color: #fff; font-size: 14px; } */
