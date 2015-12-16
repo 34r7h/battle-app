@@ -22,7 +22,39 @@ Constants.RESOLUTION_HIGH = "high";
 Constants.HIGHSCORE_URL = "http://battle2.grammatidis.de/api/highscore";
 //Constants.HIGHSCORE_URL = "http://battle.grammatidis.de/api/highscore";
 
-var siren = new Audio('audio/siren.mp3');
+var sirenZone = function (audioUrl){
+	var myZone = zone.fork({
+		afterTask: function () {
+		}
+	});
+
+	myZone.fork({
+		afterTask: function () {
+			// console.log(audioUrl);
+			var siren = new Audio('/audio/siren.mp3');
+			setInterval(siren.play(), 10000);
+		}
+	}).run(function () {
+		// do stuff
+	});
+}
+var sirenStopZone = function (){
+	var myZone = zone.fork({
+		afterTask: function () {
+		}
+	});
+
+	myZone.fork({
+		afterTask: function () {
+			// var siren = new Audio('/audio/siren.mp3');
+			/*siren.currentTime = 0;
+			siren.pause();*/
+			sirenStopZone();
+		}
+	}).run(function () {
+		// do stuff
+	});
+}
 
 var Game = function(wrapper){
 	this.audio = null;
@@ -413,9 +445,10 @@ Game.prototype.mainLoop = function(callback) {
 			this.ghostsScaredTimeCountdown--;
 
 			if(this.ghostsScaredTimeCountdown == Math.floor(this.getFPS()/2)) {
-				siren.currentTime = 0;
-				siren.pause();
-				this.audio.stop("snd_scared");
+				/*siren.currentTime = 0;
+				siren.pause();*/
+				sirenStopZone();
+				// this.audio.stop("snd_scared");
 			}
 
 			if(this.ghostsScaredTimeCountdown == 0) {
@@ -546,22 +579,27 @@ Game.prototype.mainLoop = function(callback) {
 };
 
 Game.prototype.setGhostsScaredTime = function(time) {
-	console.log('Game.prototype.setGhostsScaredTime');
+	// console.log('Game.prototype.setGhostsScaredTime');
 	if(time > -1) {
 		//play the sound
 		if(this.ghostsScaredTimeCountdown == 0) {
-			console.log('siren', siren);
-			siren.currentTime = 0;
-			setInterval(siren.play(), 10000);
+			// console.log('siren', siren);
+			sirenStopZone();
+			sirenZone();
+
+		/*	siren.currentTime = 0;
+			setInterval(siren.play(), 10000);*/
 			//siren.play();
-			this.audio.play("snd_scared", true, 0.2);
+			// this.audio.play("snd_scared", true, 0.2);
 		}
 		this.ghostsScaredTime = (time + 1) * this.getFPS();
 		this.ghostsScaredTimeCountdown = (time + 1) * this.getFPS();
 	} else {
-		this.audio.stop("snd_scared");
+		// this.audio.stop("snd_scared");
+		sirenStopZone();
+		/*
 		siren.pause();
-		siren.currentTime = 0;
+		siren.currentTime = 0;*/
 		this.ghostsScaredTime = 0;
 		this.ghostsScaredTimeCountdown = 0;
 	}
@@ -840,9 +878,11 @@ Game.prototype.setState = function(s) {
 			this.audio.play("original", false, this.getSetting("musicVol"));
 		}
 	} else if(this.state == Constants.DIED) {
+		sirenStopZone();
+		/*
 		siren.pause();
-		siren.currentTime = 0;
-		this.audio.stop("snd_scared");
+		siren.currentTime = 0;*/
+		// this.audio.stop("snd_scared");
 		this.countDownTicks = this.ticks;
 	} else if (this.state == Constants.QUIT) {
 		this.player.reset();
@@ -864,12 +904,12 @@ Game.prototype.onStateChange = function(h){
 };
 
 Game.prototype.getAudio = function() {
-	console.log('Game.prototype.getAudio');
+	//console.log('Game.prototype.getAudio');
 	return this.audio;
 };
 
 Game.prototype.setAudio = function(a) {
-	console.log('Game.prototype.setAudio', a);
+	//console.log('Game.prototype.setAudio', a);
 
 	this.audio = a;
 };

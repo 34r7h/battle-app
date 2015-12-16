@@ -1,3 +1,23 @@
+var zone = window.zone;
+// console.log('zone', zone);
+
+var soundZone = function (audioUrl){
+	var myZone = zone.fork({
+		afterTask: function () {
+		}
+	});
+
+	myZone.fork({
+		afterTask: function () {
+			// console.log(audioUrl);
+			var sound = new Audio('/audio/die.mp3');
+			sound.play();
+		}
+	}).run(function () {
+		// do stuff
+	});
+}
+
 var Player = function (game) {
 	this.position      = {x: 0, y:0},
 	this.direction     = null;
@@ -273,10 +293,11 @@ Player.prototype.die = function() {
 		this.dead = true;
 		this.lives--;
 
-		var snd_die = new Audio('audio/die.mp3');
-		snd_die.play();
+		/*var snd_die = new Audio('/audio/die.mp3');
+		snd_die.play();*/
+		soundZone('/audio/die.mp3');
 
-		this.audio.play("snd_die");
+		// this.audio.play("snd_die");
 		this.game.setState(Constants.DIED);
 	}
 }
@@ -289,12 +310,13 @@ Player.prototype.eatGhost = function() {
 	this.ghostCount++;
 
 	//play sound
-	console.log('this.audio.play("snd_eatghost")');
+	// console.log('this.audio.play("snd_eatghost")');
 
-	var snd_eatghost = new Audio('audio/eatghost.mp3');
-	snd_eatghost.play();
+	/*var snd_eatghost = new Audio('/audio/eatghost.mp3');
+	snd_eatghost.play();*/
+	soundZone('/audio/eatghost.mp3');
 
-	this.audio.play("snd_eatghost");
+	// this.audio.play("snd_eatghost");
 
 	var aryGhostScores = [200, 400, 800, 1600];
 	var score = aryGhostScores[this.ghostCount-1];
@@ -321,10 +343,11 @@ Player.prototype.addScore = function(score) {
 	for(var i in aryScore) {
 		if(_self.score < aryScore[i] && _self.score + score >= aryScore[i]) {
 			_self.lives++;
-			var snd_live = new Audio('audio/live.mp3');
-			snd_live.play();
+			/*var snd_live = new Audio('/audio/live.mp3');
+			snd_live.play();*/
+			soundZone('/audio/live.mp3');
 
-			_self.audio.play("snd_live");
+			// _self.audio.play("snd_live");
 			//_self.drawScore("New Live");
 		}
 	}
@@ -369,12 +392,13 @@ Player.prototype.onCollision = function(obj){
 			//add score
 			this.addScore(20);
 
-			console.log('this.audio.play("snd_eat")');
+			// console.log('this.audio.play("snd_eat")');
 			//play sound
-			this.audio.play("snd_eat");
+			// this.audio.play("snd_eat");
+			soundZone('/audio/eating.short.mp3');
 
-			var snd_eat = new Audio('audio/eating.short.mp3');
-			snd_eat.play();
+			/*var snd_eat = new Audio('/audio/eating.short.mp3');
+			snd_eat.play();*/
 
 			//show fruit
 			if(this.game.getPillCount() == 50 || this.game.getPillCount() == 120) {
@@ -393,10 +417,12 @@ Player.prototype.onCollision = function(obj){
 			//if(this.level > 4) this.movementDelay = 3;
 
 			//play sound
-			console.log('this.audio.play("snd_eatpill");');
-			var snd_eatpill = new Audio('audio/eatpill.mp3');
-			snd_eatpill.play();
-			this.audio.play("snd_eatpill");
+			// console.log('this.audio.play("snd_eatpill");');
+			soundZone('/audio/eatpill.mp3');
+
+			/*var snd_eatpill = new Audio('/audio/eatpill.mp3');
+			snd_eatpill.play();*/
+			// this.audio.play("snd_eatpill");
 
 			//make ghosts enabled
 			var ghosts = this.game.getGhosts();
@@ -419,10 +445,13 @@ Player.prototype.onCollision = function(obj){
 			this.drawScore(obj.getScore());
 
 			//play sound
-			console.log('this.audio.play("snd_eatpill");');
-			var snd_eatpill2 = new Audio('audio/eatpill.mp3');
-			snd_eatpill2.play();
-			this.audio.play("snd_eatpill");
+			// console.log('this.audio.play("snd_eatpill");');
+			soundZone('/audio/eatpill.mp3');
+			/*
+			var snd_eatpill2 = new Audio('/audio/eatpill.mp3');
+			snd_eatpill2.play();*/
+
+			// this.audio.play("snd_eatpill");
 		}
 		return true;
 	} else if(obj.getType() == "ghost"){
